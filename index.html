@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Anagram Checker App</title>
+        <style>
+            * { font-size: 40px;}
+            body { background-color: lightgreen;}
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>Anagram Checker</h1>
+            <form onsubmit="acp()">
+                <input type="text" id="string1" placeholder="enter first string" />
+                <br/><br/>
+                <input type="text" id="string2" placeholder="enter second string" />
+                <br/><br/>
+                <input type="submit" value="Check" />
+            </form>
+                <h2 id="msg" />
+
+            <script>
+                function acp()
+                {
+                    event.preventDefault();
+                    let string1 = document.getElementById("string1");
+                    let string2 = document.getElementById("string2");
+                    let msg = document.getElementById("msg");
+
+                    if (string1.value === "" || string2.value === "") 
+                    {
+                        alert("string is empty");
+                        msg.innerHTML ="";
+                        string1.focus();
+                        return;    
+                    }
+
+                    let str1 = string1.value.trim();
+                    let str2 = string2.value.trim();
+
+                    let sortedStr1 = str1.split("").sort().join("");
+                    let sortedStr2 = str2.split("").sort().join("");
+
+                    if (sortedStr1 === sortedStr2) {
+                        msg.innerHTML = "The words are anagrams!";
+                    } 
+                    else 
+                    {
+                        msg.innerHTML = "Not anagrams";
+                    }
+                    
+                }
+            </script>
+        </center>
+    </body>
+</html>
